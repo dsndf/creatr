@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
+import { shadesOfPurple } from "@clerk/themes";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import {
+  ClerkProvider,
+} from "@clerk/nextjs";
+import Header from "@/components/layouts/header";
+import { ThemeProvider } from "@/components/theme-provider";
+import ConvexClientProvider from "./ConvexClientProvider";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -23,11 +26,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={true}
+          disableTransitionOnChange
+        >
+          {" "}
+          <ClerkProvider
+            appearance={{
+              signIn: {
+                baseTheme: [shadesOfPurple],
+              },
+              signUp: {
+                baseTheme: [shadesOfPurple],
+              },
+            }}
+          >
+            <ConvexClientProvider>
+              {" "}
+              <main className="bg-slate-900 min-h-screen text-white overflow-x-hidden pt-48">
+                <Header />
+                {children}
+              </main>
+            </ConvexClientProvider>
+          </ClerkProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
