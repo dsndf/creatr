@@ -33,10 +33,10 @@ const Header = () => {
             <div className="flex justify-center items-center gap-4">
               {" "}
               <Link href={"#features"}>
-                <Button variant={"link"}>Features</Button>
+                <Button variant={"link"} className="text-lg">Features</Button>
               </Link>
-              <Link href={"#testimonials"}>
-                <Button variant={"link"}>Testimonials</Button>
+              <Link href={"#testimonials"} >
+                <Button variant={"link"} className="text-lg">Testimonials</Button>
               </Link>
             </div>
           )}

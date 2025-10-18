@@ -47,7 +47,7 @@ export default function RootLayout({
           >
             <ConvexClientProvider>
               {" "}
-              <main className="bg-slate-900 min-h-screen text-white overflow-x-hidden pt-48">
+              <main className="bg-slate-900 min-h-screen text-white overflow-x-hidden">
                 <Header />
                 {children}
               </main>
