@@ -3,12 +3,11 @@ import { Inter } from "next/font/google";
 import { shadesOfPurple } from "@clerk/themes";
 import "./globals.css";
 
-import {
-  ClerkProvider,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/layouts/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import ConvexClientProvider from "./ConvexClientProvider";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -50,6 +49,7 @@ export default function RootLayout({
               <main className="bg-slate-900 min-h-screen text-white overflow-x-hidden">
                 <Header />
                 {children}
+                <Toaster />
               </main>
             </ConvexClientProvider>
           </ClerkProvider>

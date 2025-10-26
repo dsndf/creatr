@@ -14,6 +14,8 @@ const Header = () => {
   const { isAuthenticated, isLoading } = useStoreUser();
   const path = usePathname();
 
+  if (path.startsWith("/dashboard")) return null;
+
   const userButtonAppearance = {
     elements: {
       userButtonAvatarBox: "w-10 h-10", // Custom width and height using Tailwind CSS classes
@@ -33,10 +35,14 @@ const Header = () => {
             <div className="flex justify-center items-center gap-4">
               {" "}
               <Link href={"#features"}>
-                <Button variant={"link"} className="text-lg">Features</Button>
+                <Button variant={"link"} className="text-lg">
+                  Features
+                </Button>
               </Link>
-              <Link href={"#testimonials"} >
-                <Button variant={"link"} className="text-lg">Testimonials</Button>
+              <Link href={"#testimonials"}>
+                <Button variant={"link"} className="text-lg">
+                  Testimonials
+                </Button>
               </Link>
             </div>
           )}

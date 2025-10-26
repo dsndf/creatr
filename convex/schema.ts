@@ -17,3 +17,4 @@ export default defineSchema({
     .searchIndex("search_name", { searchField: "name" })
     .searchIndex("search_email", { searchField: "email" }),
 });
+
